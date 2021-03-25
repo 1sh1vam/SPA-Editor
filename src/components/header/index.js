@@ -78,7 +78,7 @@ Header.Profile = function HeaderProfile({setProfileOpen, children, ...restProps}
         <Profile onClick={() => setProfileOpen(profile => !profile)} {...restProps}>
              <svg height="50" width="50">
                  <g className="big-circle">
-                    <circle cx="25" cy="27" r="19" fill="purple" />
+                    <circle cx="25" cy="27" r="18" fill="purple" />
                     <text x="50%" y="50%" text-anchor="middle" stroke="#fff" fill="#fff" width="1px"  dy="8px">SM</text>
                 </g>
             </svg> 

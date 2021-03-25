@@ -9,6 +9,7 @@ export const Container = styled.div`
 `
 export const Inner = styled.div`
     display: flex;
+    height: 50px;
     align-items: center;
     justify-content: space-between;
 `
@@ -18,7 +19,8 @@ export const Item = styled.div`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-
+    margin-top: 0;
+    margin-bottom: 0;
 `
 
 
@@ -27,6 +29,7 @@ export const HamBurger = styled.div`
     height: 40px;
     display: flex;
     position: relative;
+    top: -1px;
     justify-content: center;
     align-items: center;
     transition: all .5s ease-in-out;
@@ -35,6 +38,8 @@ export const HamBurger = styled.div`
     .menu-btn__burger{
         width: 25px;
         height: 3px;
+        margin-top: 0;
+        padding-top: 0;
         border-radius: 3px;
         background-color: #2e2b2a;
         transition: all .5s ease-in-out;
@@ -52,11 +57,11 @@ export const HamBurger = styled.div`
     }
 
     .menu-btn__burger::before {
-        transform: translate(-50%,-7px);
+        transform: translate(-50%,-8px);
     }
 
     .menu-btn__burger::after{
-        transform: translate(-50%,7px);
+        transform: translate(-50%,8px);
     }
 
     ${({navOpen}) => navOpen && `
@@ -96,12 +101,15 @@ export const SearchIcon = styled.button`
 `
 
 export const SearchInput = styled.input`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     background-color: #fff;
     color: #2e2b2a;
-    height: 30px;
+    height: 20px;
     border: 1px solid white;
     transition: width 0.5s;
-    border-radius: 4px;
+    box-sizing: border-box;
 `
 
 export const Invite = styled.div`
@@ -128,7 +136,7 @@ export const Profile = styled.div`
     cursor: pointer;
     .small-svg {
         position: absolute;
-        top: 4px;
+        top: 3px;
         right: 1px;
 
         .small-circle text {
@@ -213,5 +221,5 @@ export const NavClose = styled.div`
     &:hover {
         opacity: 1;
     }
-    }
+}
 `
