@@ -22,13 +22,26 @@ export const Item = styled.div`
 export const SubTitle = styled.input`
     width: 87%;
     margin: auto;
-    height: 30px;
-    font-size: 1.5rem;
     font-weight: bold;
     color: #2e2b2a;
     margin-bottom: 1em;
     border: none;
     outline: none;
+
+    font-size: ${({ele}) => {
+        switch(ele) {
+            case "H1":
+                return "2.5rem"
+            case "H2":
+                return "2rem"
+            case "H3":
+                return "1.5rem"
+            case "P":
+                return "1rem"
+            default:
+                return "1.5rem"
+        }
+    }}
 
 `
 export const Text = styled.div`
@@ -45,6 +58,9 @@ export const Text = styled.div`
         overflow:hidden;
         font-family: inherit;
     }
+
+    font-weight: ${({ele}) => ele === "B" && "700"};
+    font-style: ${({ele}) => ele === "I" && "italic"};
     
 `
 

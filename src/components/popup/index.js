@@ -7,7 +7,7 @@ export default function Popup({children, ...restProps}) {
     )
 }
 
-Popup.Item = function PopupItem({childre, ...restProps}) {
+Popup.Item = function PopupItem({children, ...restProps}) {
     return (
         <Item {...restProps}>{children}</Item>
     )
