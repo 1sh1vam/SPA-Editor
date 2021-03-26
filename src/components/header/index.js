@@ -67,25 +67,24 @@ Header.Invite = function HeaderInvite({...restProps}) {
 Header.Notification = function HeaderNotification({...restProps}) {
     return (
         <Notification {...restProps}>
-            <i class="far fa-bell"></i>
+            <i className="far fa-bell"></i>
         </Notification>
     )
 }
 
 Header.Profile = function HeaderProfile({setProfileOpen, children, ...restProps}) {
-    console.log(setProfileOpen)
     return (
         <Profile onClick={() => setProfileOpen(profile => !profile)} {...restProps}>
              <svg height="50" width="50">
                  <g className="big-circle">
                     <circle cx="25" cy="27" r="18" fill="purple" />
-                    <text x="50%" y="50%" text-anchor="middle" stroke="#fff" fill="#fff" width="1px"  dy="8px">SM</text>
+                    <text x="50%" y="50%" textAnchor="middle" stroke="#fff" fill="#fff" width="1px"  dy="8px">SM</text>
                 </g>
             </svg> 
             <svg className="small-svg" height="20" width="20">
                  <g className="small-circle">
-                    <circle cx="10" cy="10" r="6" fill="red" stroke="#fff" stroke-width="1px" />
-                    <text x="50%" y="50%"  text-anchor="middle" fill="#fff" dy="3.5px">N</text>
+                    <circle cx="10" cy="10" r="6" fill="red" stroke="#fff"  />
+                    <text x="50%" y="50%"  textAnchor="middle" fill="#fff" dy="3.5px">N</text>
                 </g>
             </svg>
             {children}

@@ -1,5 +1,6 @@
 import React, {useState} from "react"
-import { Main, ItemPanel, Editor } from "../components"
+import { Main } from "../components"
+import ItemPanelContainer from "./itempanel"
 import EditorContainer from "./editor"
 
 export default function MainContainer() {
@@ -33,7 +34,7 @@ export default function MainContainer() {
             </Main.Header>
 
             <Main.Container>
-                <ItemPanel />
+                <ItemPanelContainer />
                 <EditorContainer />
             </Main.Container>
         </Main>

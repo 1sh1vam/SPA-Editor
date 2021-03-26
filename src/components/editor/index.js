@@ -1,4 +1,5 @@
-import React, {useState} from "react"
+import React, {useState, useContext} from "react"
+import {TreeContext} from "../../context/tree"
 import {Container, Title, Item, SubTitle, Text, AddIcon} from "./styles/editor"
 import {Popup} from "../index";
 
@@ -21,13 +22,22 @@ Editor.Item = function EditorItem({children, ...restProps}) {
 }
 
 Editor.SubTitle = function EditorSubTitle({...restProps}) {
-    const [subTitle, setSubTitle] = useState("")
+    const {selectEditor, editorData, setEditorData} = useContext(TreeContext)
     const [ show, setShow ] = useState(false)
     const [selectedEle, setSelectedEle] = useState("H2")
+
+    function handleChange({target}) {
+        setEditorData(prev => {
+            return {
+                ...prev,
+                [selectEditor]: {...prev[selectEditor], title: target.value}
+            }
+        })
+    }
     return (
         <>
         { show && 
-            <Popup>
+            <Popup {...restProps}>
                 <Popup.Item 
                     selected={selectedEle==="P"} 
                     onClick={() => setSelectedEle("P")} >P
@@ -49,16 +59,16 @@ Editor.SubTitle = function EditorSubTitle({...restProps}) {
             ele={selectedEle}
             placeholder="Title"
             type="text"
-            value={subTitle}
+            value={selectEditor ? editorData[selectEditor].title : ""}
             onClick={() => setShow(prev=>!prev)}
-            onChange={({target})=>setSubTitle(target.value)}
+            onChange={handleChange}
         />
         </>
     )
 }
 
 Editor.Text = function EditorText({...restProps}) {
-    const [text, setText] = useState("")
+    const {selectEditor, editorData, setEditorData} = useContext(TreeContext)
     const [ show, setShow ] = useState(false)
     const [selectedEle, setSelectedEle] = useState("")
 
@@ -66,6 +76,15 @@ Editor.Text = function EditorText({...restProps}) {
         console.log(target)
         target.style.height = "inherit";
         target.style.height= `${target.scrollHeight}px`
+    }
+
+    function handleChange({target}) {
+        setEditorData(prev => {
+            return {
+                ...prev,
+                [selectEditor]: {...prev[selectEditor], text: target.value}
+            }
+        })
     }
 
     return (
@@ -87,9 +106,9 @@ Editor.Text = function EditorText({...restProps}) {
                 ele = {selectedEle}
                 onKeyDown = {handleKeyDown}
                 placeholder="Text"
-                value={text}
+                value={selectEditor ? editorData[selectEditor].text : ""}
                 onClick={() => setShow(prev=>!prev)}
-                onChange={({target}) => setText(target.value)}
+                onChange={handleChange}
             />
         </Text>
         </>
@@ -97,10 +116,10 @@ Editor.Text = function EditorText({...restProps}) {
     )
 }
 
-Editor.AddIcon = function EditorAddIcon({ setNumPara, item, ...restProps}) {
+Editor.AddIcon = function EditorAddIcon({...restProps}) {
     return (
         <AddIcon  {...restProps}>
-            <img onClick={()=>setNumPara(prev => [...prev, item])} src="images/icons/plus.svg" alt="plus icon" />
+            <img src="images/icons/plus.svg" alt="plus icon" />
         </AddIcon>
     )
 } 

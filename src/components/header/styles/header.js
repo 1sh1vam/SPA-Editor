@@ -1,17 +1,21 @@
 import styled from "styled-components"
 
 export const Container = styled.div`
-    margin: 0 1em;
-    padding: 1em 0;
+
+    padding: 1em 1em;
     background: #fff;
     color: #2e2b2a;
-    
+    position: fixed;
+    right: 1em;
+    left: 1em;
+    z-index: 4
 `
 export const Inner = styled.div`
     display: flex;
     height: 50px;
     align-items: center;
     justify-content: space-between;
+
 `
 
 export const Item = styled.div`

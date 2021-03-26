@@ -4,7 +4,7 @@ import {Header, Profile} from "../components"
 export default function HeaderConatiner() {
     const [navOpen, setNavOpen] = useState(false)
     const [profileOpen, setProfileOpen] = useState(false)
-    console.log(profileOpen)
+
     return(
         <Header>
             <Header.Inner>

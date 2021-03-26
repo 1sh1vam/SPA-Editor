@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const Container = styled.div`
     height: 20px;
-    min-width: 100px;
+    min-width: 120px;
     width: 20%;
     color: #fff;
     background-color: #000;
@@ -13,7 +13,7 @@ export const Container = styled.div`
     padding: 0.2em 0;
 
     ${({text}) => text && `
-        min-width: 15px;
+        min-width: 50px;
         width: 7%;
     `}
 `
