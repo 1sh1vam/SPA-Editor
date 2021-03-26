@@ -6,7 +6,7 @@ export const Container = styled.div`
     margin-left: 25%;
     width: 75%;
 
-    @media(max-width: 600px) {
+    @media(max-width: 900px) {
         margin-left: 0;
         width: 100%;
     }
@@ -20,7 +20,7 @@ export const Title = styled.h1`
     margin-bottom: 2em;
     text-align: left;
 
-    @media (max-width: 600px) {
+    @media (max-width: 900px) {
         width: 90%;
     }
 `
@@ -30,7 +30,7 @@ export const Item = styled.div`
     flex-direction: column;
     width: 80%;
     margin: 0 auto;
-    @media (max-width: 600px) {
+    @media (max-width: 900px) {
         width: 90%;
     }
 `
@@ -43,7 +43,7 @@ export const SubTitle = styled.input`
     margin-bottom: 1em;
     border: none;
     outline: none;
-    @media(max-width: 600px) {
+    @media(max-width: 900px) {
         width: 100%;
     }
 
@@ -79,7 +79,7 @@ export const Text = styled.div`
         overflow:hidden;
         font-family: inherit;
 
-        @media(max-width: 600px) {
+        @media(max-width: 900px) {
             width: 100%;
         }
     }

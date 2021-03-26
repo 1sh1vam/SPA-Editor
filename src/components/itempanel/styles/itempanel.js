@@ -8,8 +8,8 @@ export const Container = styled.div`
     background-color: #ECF0F1;
     overflow: auto;
 
-    @media (max-width: 600px) {
-        max-width: 90%;
+    @media (max-width: 900px) {
+
         width: 100%;
         height: 300px;
         position:relative;
