@@ -11,6 +11,8 @@ export default function TreeContainer({tree}) {
 
     function handleContentClick() {
         setContents(prev => [...prev, `Content ${data.indexOf(tree)+1}.${prev.length+1}`])
+        setDisplayContent(true)
+        setClicked(true)
     }
 
     function handleClick() {
