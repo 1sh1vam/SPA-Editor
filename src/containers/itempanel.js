@@ -2,16 +2,19 @@ import React, {useContext} from "react"
 import { ItemPanel } from "../components"
 import TreeContainer from "./tree"
 import { TreeContext } from "../context/tree"
+import { containerData } from "../utils/data"
 
 export default function ItemPanelContainer() {
-    const {data, setData} = useContext(TreeContext)
+    const {setDataCount} = useContext(TreeContext)
     
     function onClickHandle() {
-        setData(prev => [...prev, 
-        {
-            title: "Container "+String(prev.length+1),
-            children: []
-        }])
+        containerData.push(
+            {   id: `${containerData.length+1}`,
+                title: `Container ${containerData.length+1}`,
+                children: []
+            }
+        )
+        setDataCount(prev => prev + 1)
     }
     return(
         <ItemPanel>
@@ -26,7 +29,7 @@ export default function ItemPanelContainer() {
                 </ItemPanel.Item>
             </ItemPanel.Header>
             {
-                    data.map(obj => <TreeContainer key={obj.title} tree={obj} />)
+                    containerData.map((obj, idx) => <TreeContainer key={obj.id} path={containerData[idx].children}  tree={obj} />)
             }            
         </ItemPanel>
     )

@@ -1,15 +1,7 @@
 import styled from "styled-components"
 
 export const Container = styled.div`
-    display: flex;
-    flex-direction: column;
     padding: 0 1em;
-
-    ul {
-        margin: 0;
-        padding: 0;
-        padding-left: 2em;
-    }
 `
 
 export const Header = styled.div`
@@ -18,6 +10,7 @@ export const Header = styled.div`
     justify-content: space-between;
     align-items: center;
     overflow: hidden;
+    position: relative;
 `
 
 export const Item = styled.div`
@@ -38,10 +31,15 @@ export const Item = styled.div`
             padding: 0;
             padding-right: 0.5em;
         }
+
+        width: fit-content;
+        min-width: fit-content;
     }
 
     &: last-of-type {
-        p {
+        p { 
+            position: relative;
+            z-index: 10;
             background: #2e2b2a;
             color: #fff;
             font-size: 0.8em;
@@ -59,10 +57,17 @@ export const Item = styled.div`
 `
 
 export const Content = styled.li`
-    width: 100%;
+    width: 95%;
     margin: 0 auto;
+    margin-left: 0em;
+    margin-right: 1em;
     text-align:left;
     list-style: none;
     color: #2e2b2a;
     cursor: pointer;
+    padding-left: 1.5em;
+    ${({selected}) => selected && `
+        border-left: 2px solid orange;
+        background: #fff;
+    `}
 `

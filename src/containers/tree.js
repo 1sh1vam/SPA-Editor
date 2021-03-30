@@ -2,15 +2,27 @@ import React, {useState, useContext} from "react"
 import {Tree } from "../components"
 import { TreeContext } from "../context/tree"
 
-export default function TreeContainer({tree}) {
+export default function TreeContainer({path, tree}) {
     const [clicked, setClicked] = useState(false)
     const [hover, setHover] = useState("")
     const [contents, setContents] = useState([])
     const [displayContent, setDisplayContent] = useState(false)
-    const {data, setEditorData, setSelectEditor} = useContext(TreeContext)
+    const {setDataCount, setEditorData, selectEditor, setSelectEditor} = useContext(TreeContext)
+    const hasChild = path.length > 0;
 
     function handleContentClick() {
-        setContents(prev => [...prev, `Content ${data.indexOf(tree)+1}.${prev.length+1}`])
+        setContents(prev => [...prev, `Content ${tree.id}.${prev.length+1}`])
+        setDisplayContent(true)
+        setClicked(true)
+    }
+
+    function handleContainerClick() {
+        path.push({  
+            id: `${tree.id}.${path.length+1}`,
+            title: `Container ${tree.id}.${path.length+1}`,
+            children: []
+        })
+        setDataCount(prev => prev+1)
         setDisplayContent(true)
         setClicked(true)
     }
@@ -43,7 +55,8 @@ export default function TreeContainer({tree}) {
                         className="fas fa-plus"
                     >
                     </i>
-                    <i 
+                    <i  
+                        onClick={handleContainerClick}
                         onMouseEnter={()=>setHover("Add Container")}
                         onMouseLeave={() => setHover("")}
                         className="far fa-plus-square">
@@ -52,11 +65,22 @@ export default function TreeContainer({tree}) {
                 </Tree.Item>
             </Tree.Header>
             
-            {displayContent && <ul>{contents.map(content => 
-                <Tree.Content 
-                    onClick={() => setEditor(content)}
+            {displayContent && <>
+                {
+                    hasChild && path.map((child, index) => (
+                        <TreeContainer children={true} key={child.id} path={path[index].children} 
+                            tree={child} />
+                    ))
+                }
+                {
+                contents.map(content =>
+                    <Tree.Content 
+                        selected={content === selectEditor}
+                        onClick={() => setEditor(content)}
                     >{content}</Tree.Content>
-            )}</ul>}
+                )}
+                </>
+            }
         </Tree>
     )
 }
